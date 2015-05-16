@@ -2,12 +2,13 @@
   // height of image is 100, but height of actual tile is 50
   var TILE_HEIGHT = 50;
   var TILE_WIDTH = 100;
+  var CHARACTER_SPEED = 3;
 
   var stage = new PIXI.Container();
   var renderer = PIXI.autoDetectRenderer(800, 400);
   var meter = new FPSMeter();
   document.body.appendChild(renderer.view);
-
+  var character;
   var map = {
     'key': {
       'EW': 'end-w.png',
@@ -39,12 +40,71 @@
   function animate() {
     renderer.render(stage);
     meter.tick();
+    move_character();
     window.requestAnimationFrame(animate);
   }
 
   function on_assets_loaded() {
     generate_map(map);
+    generate_character();
     animate();
+  }
+
+  function move_character(){
+    character.position.x += character_velocity()['x'] * CHARACTER_SPEED;
+    character.position.y += character_velocity()['y'] * CHARACTER_SPEED;
+  }
+
+  function character_velocity() {
+    var velocity = {
+      'x' : 0,
+      'y' : 0,
+    }
+
+    if (window.is_key_down('LEFT')) {
+      velocity.x = -1;
+    }
+
+    if (window.is_key_down('RIGHT')) {
+      velocity.x = 1;
+    }
+
+    if (window.is_key_down('UP')) {
+      velocity.y = -1;
+    }
+
+    if (window.is_key_down('DOWN')) {
+      velocity.y = 1;
+    }
+
+    if (window.is_key_down('LEFT') && window.is_key_down('UP')) {
+      velocity.x = -0.707;
+      velocity.y = -0.707;
+    }
+
+    if (window.is_key_down('LEFT') && window.is_key_down('DOWN')) {
+      velocity.x = -0.707;
+      velocity.y = 0.707;
+    }
+
+    if (window.is_key_down('RIGHT') && window.is_key_down('UP')) {
+      velocity.x = 0.707;
+      velocity.y = -0.707;
+    }
+
+    if (window.is_key_down('RIGHT') && window.is_key_down('DOWN')) {
+      velocity.x = 0.707;
+      velocity.y = 0.707;
+    }
+
+    return velocity;
+  }
+
+  function generate_character() {
+    character =  PIXI.Sprite.fromImage('/assets/characters/placeholder.png');
+    character.position.x = 0;
+    character.position.y = 0;
+    stage.addChild(character);
   }
 
   function generate_map(map) {
@@ -70,4 +130,4 @@
 
     stage.addChild(tile);
   }
-}())
+}());
