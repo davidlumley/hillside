@@ -78,23 +78,23 @@
     }
 
     if (window.is_key_down('LEFT') && window.is_key_down('UP')) {
-      velocity.x = -0.707;
-      velocity.y = -0.707;
+      velocity.x = -0.866;
+      velocity.y = -0.44;
     }
 
     if (window.is_key_down('LEFT') && window.is_key_down('DOWN')) {
-      velocity.x = -0.707;
-      velocity.y = 0.707;
+      velocity.x = -0.866;
+      velocity.y = 0.44;
     }
 
     if (window.is_key_down('RIGHT') && window.is_key_down('UP')) {
-      velocity.x = 0.707;
-      velocity.y = -0.707;
+      velocity.x = 0.866;
+      velocity.y = -0.44;
     }
 
     if (window.is_key_down('RIGHT') && window.is_key_down('DOWN')) {
-      velocity.x = 0.707;
-      velocity.y = 0.707;
+      velocity.x = 0.866;
+      velocity.y = 0.44;
     }
 
     return velocity;
