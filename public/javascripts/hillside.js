@@ -63,38 +63,38 @@
       'y' : 0,
     }
 
-    if (window.is_key_down('LEFT')) {
+    if (window.is_key_down('LEFT') || window.is_key_down('A')) {
       velocity.x = -1;
     }
 
-    if (window.is_key_down('RIGHT')) {
+    if (window.is_key_down('RIGHT') || window.is_key_down('D')) {
       velocity.x = 1;
     }
 
-    if (window.is_key_down('UP')) {
+    if (window.is_key_down('UP') || window.is_key_down('W')) {
       velocity.y = -1;
     }
 
-    if (window.is_key_down('DOWN')) {
+    if (window.is_key_down('DOWN') || window.is_key_down('S')) {
       velocity.y = 1;
     }
 
-    if (window.is_key_down('LEFT') && window.is_key_down('UP')) {
+    if ((window.is_key_down('LEFT') && window.is_key_down('UP')) || (window.is_key_down('A') && window.is_key_down('W'))) {
       velocity.x = -0.866;
       velocity.y = -0.44;
     }
 
-    if (window.is_key_down('LEFT') && window.is_key_down('DOWN')) {
+    if ((window.is_key_down('LEFT') && window.is_key_down('DOWN')) || (window.is_key_down('A') && window.is_key_down('S'))) {
       velocity.x = -0.866;
       velocity.y = 0.44;
     }
 
-    if (window.is_key_down('RIGHT') && window.is_key_down('UP')) {
+    if ((window.is_key_down('RIGHT') && window.is_key_down('UP')) || (window.is_key_down('D') && window.is_key_down('W'))) {
       velocity.x = 0.866;
       velocity.y = -0.44;
     }
 
-    if (window.is_key_down('RIGHT') && window.is_key_down('DOWN')) {
+    if ((window.is_key_down('RIGHT') && window.is_key_down('DOWN')) || (window.is_key_down('D') && window.is_key_down('S'))) {
       velocity.x = 0.866;
       velocity.y = 0.44;
     }

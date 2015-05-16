@@ -5,6 +5,10 @@
     'UP': 38,
     'RIGHT': 39,
     'DOWN': 40,
+    'A': 65,
+    'W': 87,
+    'D': 68,
+    'S': 83,
   };
 
   document.addEventListener('keydown', on_keydown);
