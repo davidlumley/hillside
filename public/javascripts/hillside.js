@@ -1,13 +1,15 @@
 (function(){
-  // height of image is 100, but height of actual tile is 50
-  var TILE_HEIGHT = 50;
-  var TILE_WIDTH = 100;
+  // height of image is 64, but height of actual tile is 32
+  var TILE_HEIGHT = 32;
+  var TILE_WIDTH = 64;
   var CHARACTER_SPEED = 3;
 
   var stage = new PIXI.Container();
-  var renderer = PIXI.autoDetectRenderer(800, 400);
+  var renderer = PIXI.autoDetectRenderer(512, 256);
   var meter = new FPSMeter();
+
   document.body.appendChild(renderer.view);
+
   var character;
   var map = {
     'key': {
